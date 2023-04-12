@@ -1,21 +1,20 @@
 package fr.sdv2023.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 @Entity
 @Table(name = "livre")
 public class Livre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "titre")
     private String titre;
 
+    @Column(name = "auteur")
     private String auteur;
-
     public Livre(Long id, String titre, String auteur) {
         this.id = id;
         this.titre = titre;
