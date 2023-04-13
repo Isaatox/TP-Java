@@ -4,7 +4,6 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Adresse {
-    private Integer id;
     private Integer numero;
     private String rue;
     private Integer codePostal;
@@ -16,7 +15,6 @@ public class Adresse {
     @Override
     public String toString() {
         return "Adresse{" +
-                "id=" + id +
                 ", numero=" + numero +
                 ", rue='" + rue + '\'' +
                 ", codePostal=" + codePostal +
@@ -24,13 +22,6 @@ public class Adresse {
                 '}';
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getNumero() {
         return numero;
