@@ -12,13 +12,10 @@ import java.util.List;
 public class TestBibliotheque {
     public static void main(String[] args) {
 
-        // Création de l'EntityManagerFactory
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("demo");
+g        EntityManagerFactory emf = Persistence.createEntityManagerFactory("demo");
 
-        // Création de l'EntityManager
         EntityManager em = emf.createEntityManager();
 
-        // Requête pour extraire un emprunt et tous ses livres associés
         TypedQuery<Emprunt> query1 = em.createQuery(
                 "SELECT e FROM Emprunt e JOIN FETCH e.livres WHERE e.id = :id", Emprunt.class);
         query1.setParameter("id", 1);
@@ -28,7 +25,6 @@ public class TestBibliotheque {
             System.out.println("- " + livre.getTitre() + " (" + livre.getAuteur() + ")");
         }
 
-        // Requête pour extraire tous les emprunts d'un client donné
         TypedQuery<Emprunt> query2 = em.createQuery(
                 "SELECT e FROM Emprunt e WHERE e.client.id = :id", Emprunt.class);
         query2.setParameter("id", 1);
@@ -41,10 +37,7 @@ public class TestBibliotheque {
             }
         }
 
-        // Fermeture de l'EntityManager
         em.close();
-
-        // Fermeture de l'EntityManagerFactory
         emf.close();
     }
 }
