@@ -1,6 +1,6 @@
 package fr.sdv2023;
 
-import fr.sdv2023.entities.Livre;
+import fr.sdv2023.bibliotheque.entities.Livre;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -66,7 +66,7 @@ public class Main {
 //            em.remove(livre);
 //            em.getTransaction().commit();
 
-            String query = "SELECT b FROM Livre b";
+            String query = "SELECT l FROM Livre l";
             List<Livre> livres = em.createQuery(query, Livre.class).getResultList();
 
             for (Livre livre : livres) {

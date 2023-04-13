@@ -1,6 +1,7 @@
-package fr.sdv2023.entities;
+package fr.sdv2023.bibliotheque.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "livre")
@@ -15,10 +16,13 @@ public class Livre {
 
     @Column(name = "auteur")
     private String auteur;
-    public Livre(Long id, String titre, String auteur) {
+    @ManyToMany(mappedBy = "livres")
+    private List<Emprunt> emprunts;
+    public Livre(Long id, String titre, String auteur, List<Emprunt> emprunts) {
         this.id = id;
         this.titre = titre;
         this.auteur = auteur;
+        this.emprunts = emprunts;
     }
 
     public Livre() {
@@ -55,5 +59,13 @@ public class Livre {
 
     public void setAuteur(String auteur) {
         this.auteur = auteur;
+    }
+
+    public List<Emprunt> getEmprunts() {
+        return emprunts;
+    }
+
+    public void setEmprunts(List<Emprunt> emprunts) {
+        this.emprunts = emprunts;
     }
 }
